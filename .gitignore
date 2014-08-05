@@ -10,6 +10,8 @@ presentation/
 ##############
 
 *.csv
+*.json
+*.rrf
 
 # Figure files #
 ################
