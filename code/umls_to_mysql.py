@@ -115,6 +115,7 @@ if __name__ == "__main__":
     data.columns = headers
     data = data.dropna(axis=1)
     headers = list(data.columns) # update (without empty columns)
+    # run string processing replacing either " ' by the other to avoid problems with sql query
 
     # database
     tableName = file.split('.')[0].lower()    
@@ -150,6 +151,18 @@ if __name__ == "__main__":
         con.commit()
 
   print "DONE \n\n"
+
+
+# Processing file: RXNREL.RRF
+
+# Inserting entry: 0 out of: 5156552
+
+# Traceback (most recent call last):
+#   File "umls_to_mysql.py", line 142, in <module>
+#     query = insertValues(file, values, 1)
+#   File "umls_to_mysql.py", line 76, in insertValues
+
+#     query = """INSERT INTO rxnrel VALUES ('%s', '%s', '%s', '%s', '%s', '%s');""" %values
 
 
 

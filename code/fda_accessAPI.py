@@ -44,7 +44,7 @@ if __name__ == "__main__":
   b = 0  # number of entries to skip
 
   results = []
-  while b<= 1000:
+  while b<10000:
 
     limits = '&limit='+str(a)+'&skip='+str(b)
     url = root+apiDrugs+apiFormat+'api_key='+myKey+query+limits
