@@ -60,27 +60,27 @@ if __name__ == "__main__":
 
 
   # create connection to db
-  con = mdb.connect('localhost', 'root', '', 'fda_data'); #host, user, password, #database
+  con = mdb.connect(host = 'localhost', user = 'friederike', passwd = 'fsas2403', db = 'fda'); #host, user, password, #database
 
   with con:
     cur = con.cursor()
 
     # drop all tables if exist
-    cur.execute("""DROP TABLE IF EXISTS main_table;""")
-    cur.execute("""DROP TABLE IF EXISTS patient_table;""")
-    cur.execute("""DROP TABLE IF EXISTS sources_table;""")
-    cur.execute("""DROP TABLE IF EXISTS drugs_table;""")
-    cur.execute("""DROP TABLE IF EXISTS serious_table;""")
-    cur.execute("""DROP TABLE IF EXISTS drugs_report_link_table;""")
-    cur.execute("""DROP TABLE IF EXISTS drug_patient_table;""")
+    cur.execute("""DROP TABLE IF EXISTS main;""")
+    cur.execute("""DROP TABLE IF EXISTS patient;""")
+    cur.execute("""DROP TABLE IF EXISTS sources;""")
+    cur.execute("""DROP TABLE IF EXISTS drugs;""")
+    cur.execute("""DROP TABLE IF EXISTS serious;""")
+    cur.execute("""DROP TABLE IF EXISTS drugs_report;""")
+    cur.execute("""DROP TABLE IF EXISTS drug_patient;""")
 
     # create all tables
-    query = """CREATE TABLE main_table 
-    (id int,
-    reportid int,
-    duplicate int,
-    receivedate varchar(10)
-    receiptdate varchar(10)
+    query = """CREATE TABLE main 
+    (id int(10),
+    reportid int(10),
+    duplicate int(10),
+    receivedate varchar(10),
+    receiptdate varchar(10),
     serious int,
     transmissiondate varchar(10),
     occurcountry varchar(10),
@@ -100,7 +100,7 @@ if __name__ == "__main__":
 
       # read data into memory one file at a time
       os.chdir(location_data)
-      f = open(file, mode = 'r', buffering = -1)
+      f = open(file, mode = 'r')
       data = json.loads(f.read())
       f.close()
       os.chdir(location_code)
@@ -138,7 +138,8 @@ if __name__ == "__main__":
           main_table = jsonToDict(d['primarysource'],'reportercountry',main_table,'reportercountry')  # fails if no primarysource key - address later
           main_table = jsonToDict(d['sender'],'sendertype',main_table,'sendertype')                   # fails if no sender key - address later
           values = tuple(main_table.values())
-          query_insert = """INSERT INTO main_table VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');""" %values
+          query = """INSERT INTO main VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');""" %values
+          cur.execute(query)
 
           # source table
           sources_table['safetyreportid'] = d['safetyreportid']

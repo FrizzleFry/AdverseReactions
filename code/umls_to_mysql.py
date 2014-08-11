@@ -71,20 +71,20 @@ def getHeaders(filename):
 def insertValues(filename, values,default):
 
    if filename == 'RXNCONSO.RRF':
-    query = """INSERT INTO rxnconso VALUES ('%s', '%s', '%s', '%s', '%s', '%s', "%s", '%s');""" %values
+    query = """INSERT INTO rxnconso VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', "%s", '%s', '%s');""" %values
    elif filename == 'RXNREL.RRF':
-      query = """INSERT INTO rxnrel VALUES ('%s', '%s', '%s', '%s', '%s', '%s');""" %values
+      query = """INSERT INTO rxnrel VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');""" %values
    elif filename == "RXNSAB.RRF":
-      query = """INSERT INTO rxnsab VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s');""" %values
+      query = """INSERT INTO rxnsab VALUES ('%s', '%s', '%s', '%s', '%s', '%s', "%s", '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');""" %values
    elif filename == "RXNSAT.RRF":
-      query = """INSERT INTO rxnsat VALUES ('%s', '%s', '%s', '%s', '%s', '%s');""" %values
+      query = """INSERT INTO rxnsat VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');""" %values
    elif filename == "RXNSTY.RRF":
-      query = """INSERT INTO rxnsty VALUES ('%s', '%s', '%s', '%s');""" %values
+      query = """INSERT INTO rxnsty VALUES ('%s', '%s', '%s', '%s', '%s');""" %values
    elif filename == "RXNDOC.RRF":
       if default:
         query = """INSERT INTO rxndoc VALUES ('%s', '%s', '%s');""" %values
       else:
-        query = """INSERT INTO rxndoc VALUES ('%s', '%s', "%s");""" %values
+        query = """INSERT INTO rxndoc VALUES ('%s', '%s', '%s', "%s");""" %values
    elif filename == "RXNCUI.RRF":
       query = """INSERT INTO rxncui VALUES ('%s', '%s', '%s', '%s', '%s');""" %values
    else:
@@ -99,7 +99,8 @@ def insertValues(filename, values,default):
 if __name__ == "__main__":
 
   # list of all data files (.RRF files) to be included (add more later) 
-  files = ['RXNCONSO.RRF', 'RXNREL.RRF', 'RXNSAB.RRF', 'RXNSAT.RRF', 'RXNSTY.RRF', 'RXNDOC.RRF', 'RXNCUI.RRF']
+  #files = ['RXNCONSO.RRF', 'RXNREL.RRF', 'RXNSAB.RRF', 'RXNSAT.RRF', 'RXNSTY.RRF', 'RXNDOC.RRF', 'RXNCUI.RRF']
+  files = ['RXNREL.RRF', 'RXNSAB.RRF', 'RXNSAT.RRF', 'RXNSTY.RRF', 'RXNDOC.RRF', 'RXNCUI.RRF']
 
   for file in files:
 
@@ -107,13 +108,13 @@ if __name__ == "__main__":
 
     # load files
     os.chdir(location_data)
-    data = pd.read_table(file,sep='|', header = None)
+    data = pd.read_table(file,sep='|', header = None, low_memory=False)
     os.chdir(location_db)
 
     # pre-process
     headers = getHeaders(file)
     data.columns = headers
-    data = data.dropna(axis=1)
+    data = data.dropna(axis=1, how='all')
     headers = list(data.columns) # update (without empty columns)
     # run string processing replacing either " ' by the other to avoid problems with sql query
 
@@ -121,7 +122,7 @@ if __name__ == "__main__":
     tableName = file.split('.')[0].lower()    
 
     # create connection to db
-    con = mdb.connect('localhost', 'root', '', 'RxNorm'); #host, user, password, #database
+    con = mdb.connect(host = 'localhost', user = 'friederike', passwd = 'fsas2403', db = 'RxNorm'); #host, user, password, #database
 
     # insert data
     with con:
