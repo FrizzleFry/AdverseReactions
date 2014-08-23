@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Friederike Schuur">
+
+    <title>Drugged Up</title>
+
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../static/css/freelancer.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../static/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- load d3 javascript -->
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#page-top">Drugged Up</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#overlap">Overlap?</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#detail">Content?</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#sideeffects">Sideeffects?</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#about">About</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="../static/img/pill.png" alt="">
+                    <div class="intro-text">
+                        <span class="name">Drugged up?</span>
+                        <hr class="star-light">
+                    </div>
+                        <p>Across the US, people unknowingly overdose on drugs.</p> 
+                        <p>The same ingredient may hide in another products under a different names.</p> 
+                        <p>Are you taking the same drug twice? What do your drugs contain?</p>
+                        <p>And how may they affect you?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Same thing twice -->
+    <section id="overlap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Am I taking the same thing twice?</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row" id = "formEntry">
+                <form>
+                    <h3>One drug I take</h3> 
+                    <input class = "form-control" type="text" id = "drug1" placeholder = "e.g. aspirin"><br>
+                    <p></p>
+                    <h3>Another drug I take</h3> 
+                    <input class = "form-control" type="text" id = "drug2" placeholder = "e.g. tylenol"><br>
+                    <p></p>
+                    <button id="submitOverlap" class="btn btn-success btn-lg">I want to know</button>
+                </form>
+                <div id = "queryOverlap">
+                    <p></p>
+                </div>
+                <div id = "answerOverlapMessage">
+                    <p></p>
+                </div>
+                <div id = "answerOverlapIngredient">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- section divider -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-text">
+                        <span class="name"></span>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- What's in my drug? -->
+    <section id="detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>What's in my drugs?</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row" id = "formEntry">
+                <form>
+                    <h3>Which drug do you want to know more about?</h3> 
+                    <input class = "form-control" type="text" id = "drug3" placeholder = "What drug do you want to know more about?"><br>
+                    <p></p>
+                    <button id="submitIngredient" class="btn btn-success btn-lg">Tell me more</button>
+                </form>
+                <div id = "queryIngredient">
+                    <p> </p>
+                </div>
+                <div id = "answerIngredientsHead">
+                    <p> </p>
+                </div>
+                <div id="ingredients">
+                    <p></p>
+                    <table class="table">
+                    </table>
+                </div>
+                <div id = "answerGenericnameHead">
+                    <p> </p>
+                </div>
+                <div id="genericnames">
+                    <p></p>
+                    <table class="table">
+                    </table>
+                </div>
+                <div id = "answerBrandnamesHead">
+                    <p> </p>
+                </div>
+                 <div id="brandnames">
+                    <p></p>
+                    <table class="table">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- section divider -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-text">
+                        <span class="name"></span>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- What's in my drug? -->
+    <section id="sideeffects">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>What are the more common side effects?</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row" id = "formEntry">
+                <form>
+                    <h3>Enter one drug you are curious about:</h3> 
+                    <input class = "form-control" type="text" id = "drugSE" placeholder = "e.g. aspirin"><br>
+                    <p></p>
+                    <button id="submitSE" class="btn btn-success btn-lg">I want to know</button>
+                </form>
+                <div id = "queryDisplaySE">
+                    <p></p>
+                </div>
+                <div id = "answerSE">
+                    <p></p>
+                </div>
+                <div id="sideeffects">
+                    <p></p>
+                    <table class="table">
+                    </table>
+                </div>
+                <div id = "chart">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- section divider -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-text">
+                        <span class="name"></span>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="success" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Drugged Up</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2">
+                    <p>We love drugs. They help us overcome that nasty inflammation of our tonsils. They prolong and improve lives. </p>
+                    <p>But we have got to use them with moderation.</p>
+                    <p>Due to a diversity of names and no easy way to link different names to the same drug concept, people have overdosed on drugs, sometimes with deadly consequences.</p> 
+                </div>
+                <div class="col-lg-4">
+                    <p>This app allows to determine whether you take the same substance twice, just under different names.</p>
+                    <p>If you are curious, you can further explore the ingredients and alternative names for a given drug or explore drug by drug interactions.</p> 
+                    <p>Now you know what you're taking. Get well soon!</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3>Location</h3>
+                        <p>Brooklyn, NY 11237</p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Around the Web</h3>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>About Drugged Up</h3>
+                        <p>Powered by RxNorm and the FDA open data.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; Drugged Up 2014
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll visible-xs visble-sm">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="../static/js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../static/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="../static/js/classie.js"></script>
+    <script src="../static/js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="../static/js/jqBootstrapValidation.js"></script>
+    <!--<script src="../static/js/contact_me.js"></script>-->
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../static/js/freelancer.js"></script>
+
+    <!-- Friede written JavaScript -->
+
+    <script>
+
+         $('#submitOverlap').bind('click', function() {
+         $("#queryOverlap p").remove();
+         $("#answerOverlapMessage h3").remove();
+         $("#answerOverlapIngredient p").remove();
+         $("#answerOverlapMessage p").remove();
+         $("#answerOverlapMessage").append('<p></p><p>Processing query, please wait.</p>')      
+         
+         $.getJSON('/_drug1', {
+           drug1: $('#drug1').val(),
+           drug2: $('#drug2').val(),
+         }, 
+         
+         function(data) {
+           drugs = data.d
+           $("#queryOverlap p").remove();
+           $("#answerOverlapMessage p").remove();
+           $("#queryOverlap").append('<p></p><p>You searched for ' + drugs['entry1'] + ' and ' + drugs['entry2'] + '</p>');
+           $("#answerOverlapMessage").append('<p>And I am telling you ...</p>')
+           $("#answerOverlapMessage").append('<h3>' + drugs['message'] + '</h3>')
+           $("#answerOverlapIngredient").append('<p></p><p>The overlapping ingredient is: ' + drugs['name']+".</p>")
+           $("#answerOverlapIngredient").append('<p>Please check dosage guidelines.</p>')
+         });
+         
+         return false;
+         
+         });
+
+         $('#submitOverlap').bind('click', function() {
+         $("#ingredients tr").remove();
+         $("#brandnames tr").remove();
+         $("#ingredientsHead p").remove();
+         $("#brandnamesHead p").remove();
+         $("#queryDisplayDetailed p").remove();
+         $("#queryDisplayDetailed").append('<p></p><p>Processing query, please wait.</p>')
+         
+         $.getJSON('/_drug3', {
+           drug3: $('#drug3').val(),
+         }, 
+         function(data) {
+           drugs = data.d
+           $("#queryDisplayDetailed p").remove();
+           $("#ingredients tr").remove();
+           $("#brandnames tr").remove();
+           $("#queryDisplayDetailed").append('<p>You searched for: ' + drugs['entry'] + '</p>');
+           $("#ingredientsHead").append('<p>Active ingredient(s):</p>');
+           $("#brandnamesHead").append('<p>Brandname(s) of drugs with the same active ingredient:</p>');
+           for (i=0; i<drugs['ingredients'].length; i++) {
+                $("#ingredients table").append('<tr><td>' + drugs['ingredients'][i]['ingredient'] + '</td></tr>');
+           }
+           for (i=0; i<drugs['brandnames'].length; i++) {
+                $("#brandnames table").append('<tr><td>' + drugs['brandnames'][i]['brandname'] + '</td></tr>');
+           }
+         });
+         
+         return false;
+         
+         });
+
+         $('#submitSE').bind('click', function() {
+         $("#queryDisplaySE p").remove();
+         $("#answerSE h3").remove();
+         $("#answerSE p").remove();
+         $("#chart svg").remove();
+         $("#sideeffects tr").remove();
+         $("#queryDisplaySE").append('<p></p><p>Processing query, please wait.</p>')      
+         
+         $.getJSON('/_drug_reactions', {
+           drugSE: $('#drugSE').val(),
+         }, 
+         
+         function(data) {
+           data = data.d['sideeffects']
+           $("#queryDisplaySE p").remove();
+           $("#sideeffects tr").remove();
+           $("#chart svg").remove();
+           //$("#queryDisplaySE").append('<p>You searched for ' + data['entry'] + '</p>');
+           $("#answerSE").append('<p></p><p>The ten most reported side effects to the FDA are:</p>')
+
+           // for (i=0; i<data['sideeffects'].length; i++) {
+           //      $("#sideeffects table").append('<tr><td>' + data['sideeffects'][i]['reaction'] + '</td><td>' + data['sideeffects'][i]['proportion'] + '</tr>');
+           //}
+
+            var valueLabelWidth = 40; // space reserved for value labels (right)
+            var barHeight = 20; // height of one bar
+            var barLabelWidth = 300; // space reserved for bar labels
+            var barLabelPadding = 5; // padding between bar and bar labels (left)
+            var gridLabelHeight = 18; // space reserved for gridline labels
+            var gridChartOffset = 3; // space between start of grid and first bar
+            var maxBarWidth = 420; // width of the bar with the max value
+             
+            // accessor functions 
+            var barLabel = function(d) { return d['reaction']; };
+            var barValue = function(d) { return parseFloat(d['proportion']); };
+             
+            // scales
+            var yScale = d3.scale.ordinal().domain(d3.range(0, data.length)).rangeBands([0, data.length * barHeight]);
+            var y = function(d, i) { return yScale(i); };
+            var yText = function(d, i) { return y(d, i) + yScale.rangeBand() / 2; };
+            var x = d3.scale.linear().domain([0, d3.max(data, barValue)]).range([0, maxBarWidth]);
+            
+            // svg container element
+            var chart = d3.select('#chart').append("svg")
+              .attr('width', maxBarWidth + barLabelWidth + valueLabelWidth)
+              .attr('height', gridLabelHeight + gridChartOffset + data.length * barHeight);
+            
+            // grid line labels
+            var gridContainer = chart.append('g')
+              .attr('transform', 'translate(' + barLabelWidth + ',' + gridLabelHeight + ')'); 
+            gridContainer.selectAll("text").data(x.ticks(10)).enter().append("text")
+              .attr("x", x)
+              .attr("dy", -3)
+              .attr("text-anchor", "middle")
+              .text(String);
+            
+            // vertical grid lines
+            gridContainer.selectAll("line").data(x.ticks(10)).enter().append("line")
+              .attr("x1", x)
+              .attr("x2", x)
+              .attr("y1", 0)
+              .attr("y2", yScale.rangeExtent()[1] + gridChartOffset)
+              .style("stroke", "#ccc");
+            
+            // bar labels
+            var labelsContainer = chart.append('g')
+              .attr('transform', 'translate(' + (barLabelWidth - barLabelPadding) + ',' + (gridLabelHeight + gridChartOffset) + ')'); 
+            labelsContainer.selectAll('text').data(data).enter().append('text')
+              .attr('y', yText)
+              .attr('stroke', 'none')
+              .attr('fill', 'black')
+              .attr("dy", ".35em") // vertical-align: middle
+              .attr('text-anchor', 'end')
+              .text(barLabel);
+            
+            // bars
+            var barsContainer = chart.append('g')
+              .attr('transform', 'translate(' + barLabelWidth + ',' + (gridLabelHeight + gridChartOffset) + ')'); 
+            barsContainer.selectAll("rect").data(data).enter().append("rect")
+              .attr('y', y)
+              .attr('height', yScale.rangeBand())
+              .attr('width', function(d) { return x(barValue(d)); })
+              .attr('stroke', 'white')
+              .style('fill', '#2C3E50');
+            
+            // bar value labels
+            barsContainer.selectAll("text").data(data).enter().append("text")
+              .attr("x", function(d) { return x(barValue(d)); })
+              .attr("y", yText)
+              .attr("dx", 3) // padding-left
+              .attr("dy", ".35em") // vertical-align: middle
+              .attr("text-anchor", "start") // text-align: right
+              .attr("fill", "black")
+              .attr("stroke", "none")
+              .text(function(d) { return d3.round(barValue(d), 2); });
+            // start line
+            barsContainer.append("line")
+              .attr("y1", -gridChartOffset)
+              .attr("y2", yScale.rangeExtent()[1] + gridChartOffset)
+              .style("stroke", "#000");
+
+           
+
+         });
+         
+         return false;
+         
+         });
+
+
+
+
+    </script>
+
+</body>
+
+</html>
