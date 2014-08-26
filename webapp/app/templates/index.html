@@ -53,9 +53,6 @@
                         <a href="#overlap">Overlap?</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#detail">Content?</a>
-                    </li>
-                    <li class="page-scroll">
                         <a href="#sideeffects">Sideeffects?</a>
                     </li>
                     <li class="page-scroll">
@@ -105,77 +102,10 @@
                     <h3>Another drug I take</h3> 
                     <input class = "form-control" type="text" id = "drug2" placeholder = "e.g. tylenol"><br>
                     <p></p>
-                    <button id="submitOverlap" class="btn btn-success btn-lg">I want to know</button>
+                    <button id="submitOverlap" class="btn btn-success btn-lg">Tell me</button>
                 </form>
-                <div id = "queryOverlap">
-                    <p></p>
-                </div>
                 <div id = "answerOverlapMessage">
                     <p></p>
-                </div>
-                <div id = "answerOverlapIngredient">
-                    <p></p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- section divider -->
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="intro-text">
-                        <span class="name"></span>
-                        <p></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- What's in my drug? -->
-    <section id="detail">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>What's in my drugs?</h2>
-                    <hr class="star-primary">
-                </div>
-            </div>
-            <div class="row" id = "formEntry">
-                <form>
-                    <h3>Which drug do you want to know more about?</h3> 
-                    <input class = "form-control" type="text" id = "drug3" placeholder = "What drug do you want to know more about?"><br>
-                    <p></p>
-                    <button id="submitIngredient" class="btn btn-success btn-lg">Tell me more</button>
-                </form>
-                <div id = "queryIngredient">
-                    <p> </p>
-                </div>
-                <div id = "answerIngredientsHead">
-                    <p> </p>
-                </div>
-                <div id="ingredients">
-                    <p></p>
-                    <table class="table">
-                    </table>
-                </div>
-                <div id = "answerGenericnameHead">
-                    <p> </p>
-                </div>
-                <div id="genericnames">
-                    <p></p>
-                    <table class="table">
-                    </table>
-                </div>
-                <div id = "answerBrandnamesHead">
-                    <p> </p>
-                </div>
-                 <div id="brandnames">
-                    <p></p>
-                    <table class="table">
-                    </table>
                 </div>
             </div>
         </div>
@@ -211,36 +141,18 @@
                     <p></p>
                     <button id="submitSE" class="btn btn-success btn-lg">I want to know</button>
                 </form>
-                <div id = "queryDisplaySE">
+                <div id = "answerSEMessage">
                     <p></p>
                 </div>
-                <div id = "answerSE">
-                    <p></p>
+                <div id = "chartNotSerious">
                 </div>
-                <div id="sideeffects">
-                    <p></p>
-                    <table class="table">
-                    </table>
+                <div id = "chartSerious">
                 </div>
-                <div id = "chart">
+                <div id ="discriminativeFeatures">
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- section divider -->
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="intro-text">
-                        <span class="name"></span>
-                        <p></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
 
     <!-- About Section -->
     <section class="success" id="about">
@@ -253,16 +165,20 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2">
-                    <p>We love drugs. They help us overcome that nasty inflammation of our tonsils. They prolong and improve lives. </p>
-                    <p>But we have got to use them with moderation.</p>
+                    <p>We love drugs. They prolong and improve lives. They help us overcome that nasty inflammation of our tonsils, for example. But we have got to use them with moderation.</p>
                     <p>Due to a diversity of names and no easy way to link different names to the same drug concept, people have overdosed on drugs, sometimes with deadly consequences.</p> 
                 </div>
                 <div class="col-lg-4">
                     <p>This app allows to determine whether you take the same substance twice, just under different names.</p>
-                    <p>If you are curious, you can further explore the ingredients and alternative names for a given drug or explore drug by drug interactions.</p> 
-                    <p>Now you know what you're taking. Get well soon!</p>
+                    <p>If you are curious, you can further explore the ingredients and alternative names for a given drug or explore drug by drug interactions. Now you know what you're taking. Get well soon!</p> 
+                    <p>And to learn more, <a href = '/static/documents/InsightDemo.pdf'>click here</a> or look at the presentation below.</p>
                 </div>
-
+                <div align = "center">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <iframe src="//www.slideshare.net/slideshow/embed_code/38336177" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/FrizzleFry/druggedup-38336177" title="Drugged-up-add" target="_blank">Drugged-up-add</a> </strong> from <strong><a href="http://www.slideshare.net/FrizzleFry" target="_blank">FrizzleFry</a></strong> </div>
+                </div>
             </div>
         </div>
     </section>
@@ -344,9 +260,6 @@
     <script>
 
          $('#submitOverlap').bind('click', function() {
-         $("#queryOverlap p").remove();
-         $("#answerOverlapMessage h3").remove();
-         $("#answerOverlapIngredient p").remove();
          $("#answerOverlapMessage p").remove();
          $("#answerOverlapMessage").append('<p></p><p>Processing query, please wait.</p>')      
          
@@ -357,161 +270,210 @@
          
          function(data) {
            drugs = data.d
-           $("#queryOverlap p").remove();
            $("#answerOverlapMessage p").remove();
-           $("#queryOverlap").append('<p></p><p>You searched for ' + drugs['entry1'] + ' and ' + drugs['entry2'] + '</p>');
-           $("#answerOverlapMessage").append('<p>And I am telling you ...</p>')
-           $("#answerOverlapMessage").append('<h3>' + drugs['message'] + '</h3>')
-           $("#answerOverlapIngredient").append('<p></p><p>The overlapping ingredient is: ' + drugs['name']+".</p>")
-           $("#answerOverlapIngredient").append('<p>Please check dosage guidelines.</p>')
-         });
-         
-         return false;
-         
-         });
-
-         $('#submitOverlap').bind('click', function() {
-         $("#ingredients tr").remove();
-         $("#brandnames tr").remove();
-         $("#ingredientsHead p").remove();
-         $("#brandnamesHead p").remove();
-         $("#queryDisplayDetailed p").remove();
-         $("#queryDisplayDetailed").append('<p></p><p>Processing query, please wait.</p>')
-         
-         $.getJSON('/_drug3', {
-           drug3: $('#drug3').val(),
-         }, 
-         function(data) {
-           drugs = data.d
-           $("#queryDisplayDetailed p").remove();
-           $("#ingredients tr").remove();
-           $("#brandnames tr").remove();
-           $("#queryDisplayDetailed").append('<p>You searched for: ' + drugs['entry'] + '</p>');
-           $("#ingredientsHead").append('<p>Active ingredient(s):</p>');
-           $("#brandnamesHead").append('<p>Brandname(s) of drugs with the same active ingredient:</p>');
-           for (i=0; i<drugs['ingredients'].length; i++) {
-                $("#ingredients table").append('<tr><td>' + drugs['ingredients'][i]['ingredient'] + '</td></tr>');
-           }
-           for (i=0; i<drugs['brandnames'].length; i++) {
-                $("#brandnames table").append('<tr><td>' + drugs['brandnames'][i]['brandname'] + '</td></tr>');
+           if (drugs['message'] > 0) {
+                $("#answerOverlapMessage").append('<p></p><p>The drugs ' + drugs['entry1'] + ' and ' + drugs['entry2'] + ' both contain <strong>' + drugs['name'] + '</strong>.</p>')
+                $("#answerOverlapMessage").append('<p></p><p>The recommended dose per day is <strong>' + drugs['maxDose'] +' mg per kg of body weight </strong>. The average US female of 72 kg can take ' + drugs['averageFemale'] + ' mg while the average US male of 89 kg can take ' + drugs['averageMale'] + ' mg per day. Please check your medicine to make sure you do not exceed these dosage recommendations.</p>')
+           } else if (drugs['message'] > -1){
+                $("#answerOverlapMessage").append('<p></p><p>There is <strong>no common ingredient</strong> in ' + drugs['entry1'] + ' and ' + drugs['entry2'] + '. There is no risk of taking too much of the same ingredient but check the packaging to make sure there are no known interactions between these two drugs.</p>');
+           } else if (drugs['message'] <= -1) {
+            $("#answerOverlapMessage").append("<p></p><p>We could not find any entries for your input. Sorry! We are constantly increasing our database, check in later. We know we have got a problem with birth control and we are working on that. Or was there a spelling mistake? We aim to be tolerant but sometimes, an unexpected letter can throw us off.</p>");
            }
          });
-         
          return false;
-         
          });
 
          $('#submitSE').bind('click', function() {
-         $("#queryDisplaySE p").remove();
-         $("#answerSE h3").remove();
-         $("#answerSE p").remove();
-         $("#chart svg").remove();
-         $("#sideeffects tr").remove();
-         $("#queryDisplaySE").append('<p></p><p>Processing query, please wait.</p>')      
+         $("#answerSEMessage p").remove();
+         $("#chartSerious svg").remove();
+         $("#chartNotSerious svg").remove();
+         $("#chartSerious p").remove();
+         $("#chartNotSerious p").remove();
+         $("#answerSEMessage").append('<p></p><p>Processing query, please wait.</p>')      
          
          $.getJSON('/_drug_reactions', {
            drugSE: $('#drugSE').val(),
          }, 
          
          function(data) {
-           data = data.d['sideeffects']
-           $("#queryDisplaySE p").remove();
-           $("#sideeffects tr").remove();
-           $("#chart svg").remove();
-           //$("#queryDisplaySE").append('<p>You searched for ' + data['entry'] + '</p>');
-           $("#answerSE").append('<p></p><p>The ten most reported side effects to the FDA are:</p>')
+           data = data.d
 
-           // for (i=0; i<data['sideeffects'].length; i++) {
-           //      $("#sideeffects table").append('<tr><td>' + data['sideeffects'][i]['reaction'] + '</td><td>' + data['sideeffects'][i]['proportion'] + '</tr>');
-           //}
+           $("#answerSEMessage p").remove();
+           $("#chartSerious svg").remove();
+           $("#chartNotSerious svg").remove();
+           $("#chartSerious p").remove();
+           $("#chartNotSerious p").remove();
 
-            var valueLabelWidth = 40; // space reserved for value labels (right)
-            var barHeight = 20; // height of one bar
-            var barLabelWidth = 300; // space reserved for bar labels
-            var barLabelPadding = 5; // padding between bar and bar labels (left)
-            var gridLabelHeight = 18; // space reserved for gridline labels
-            var gridChartOffset = 3; // space between start of grid and first bar
-            var maxBarWidth = 420; // width of the bar with the max value
-             
-            // accessor functions 
-            var barLabel = function(d) { return d['reaction']; };
-            var barValue = function(d) { return parseFloat(d['proportion']); };
-             
-            // scales
-            var yScale = d3.scale.ordinal().domain(d3.range(0, data.length)).rangeBands([0, data.length * barHeight]);
-            var y = function(d, i) { return yScale(i); };
-            var yText = function(d, i) { return y(d, i) + yScale.rangeBand() / 2; };
-            var x = d3.scale.linear().domain([0, d3.max(data, barValue)]).range([0, maxBarWidth]);
-            
-            // svg container element
-            var chart = d3.select('#chart').append("svg")
-              .attr('width', maxBarWidth + barLabelWidth + valueLabelWidth)
-              .attr('height', gridLabelHeight + gridChartOffset + data.length * barHeight);
-            
-            // grid line labels
-            var gridContainer = chart.append('g')
-              .attr('transform', 'translate(' + barLabelWidth + ',' + gridLabelHeight + ')'); 
-            gridContainer.selectAll("text").data(x.ticks(10)).enter().append("text")
-              .attr("x", x)
-              .attr("dy", -3)
-              .attr("text-anchor", "middle")
-              .text(String);
-            
-            // vertical grid lines
-            gridContainer.selectAll("line").data(x.ticks(10)).enter().append("line")
-              .attr("x1", x)
-              .attr("x2", x)
-              .attr("y1", 0)
-              .attr("y2", yScale.rangeExtent()[1] + gridChartOffset)
-              .style("stroke", "#ccc");
-            
-            // bar labels
-            var labelsContainer = chart.append('g')
-              .attr('transform', 'translate(' + (barLabelWidth - barLabelPadding) + ',' + (gridLabelHeight + gridChartOffset) + ')'); 
-            labelsContainer.selectAll('text').data(data).enter().append('text')
-              .attr('y', yText)
-              .attr('stroke', 'none')
-              .attr('fill', 'black')
-              .attr("dy", ".35em") // vertical-align: middle
-              .attr('text-anchor', 'end')
-              .text(barLabel);
-            
-            // bars
-            var barsContainer = chart.append('g')
-              .attr('transform', 'translate(' + barLabelWidth + ',' + (gridLabelHeight + gridChartOffset) + ')'); 
-            barsContainer.selectAll("rect").data(data).enter().append("rect")
-              .attr('y', y)
-              .attr('height', yScale.rangeBand())
-              .attr('width', function(d) { return x(barValue(d)); })
-              .attr('stroke', 'white')
-              .style('fill', '#2C3E50');
-            
-            // bar value labels
-            barsContainer.selectAll("text").data(data).enter().append("text")
-              .attr("x", function(d) { return x(barValue(d)); })
-              .attr("y", yText)
-              .attr("dx", 3) // padding-left
-              .attr("dy", ".35em") // vertical-align: middle
-              .attr("text-anchor", "start") // text-align: right
-              .attr("fill", "black")
-              .attr("stroke", "none")
-              .text(function(d) { return d3.round(barValue(d), 2); });
-            // start line
-            barsContainer.append("line")
-              .attr("y1", -gridChartOffset)
-              .attr("y2", yScale.rangeExtent()[1] + gridChartOffset)
-              .style("stroke", "#000");
+           if (data['okay'] == 1) {
 
-           
+               var ingredients = '<strong>';
+               for (i=0; i<data['ingredients'].length; i++) {
+                    ingredients = ingredients + ' (' + (i+1) + ') ' + data['ingredients'][i]['ingredient'];
+               }
+               ingredients = ingredients + '</strong>';
+               console.log(data)
+               $("#answerSEMessage").append('<p></p><p>You searched for ' + data['entry'] + ' which contains' + ingredients + '. The generic name is <strong>' + data['names'][0]['name'] + '</strong>. ' + data['total'] + ' reports that contain this ingredient have been submitted to the FDA since 2004. ' + data['propSerious'] + ' percent of these reports described serious side effects (e.g. hospitalization, potentially life threatening). Now, do not be alarmed, serious effects are more likely to get reported. Have a look at the graphs below to find out what serious and not serious side effects were most common.</p>');
+
+                var valueLabelWidth = 40; // space reserved for value labels (right)
+                var barHeight = 20; // height of one bar
+                var barLabelWidth = 300; // space reserved for bar labels
+                var barLabelPadding = 5; // padding between bar and bar labels (left)
+                var gridLabelHeight = 18; // space reserved for gridline labels
+                var gridChartOffset = 3; // space between start of grid and first bar
+                var maxBarWidth = 420; // width of the bar with the max value
+                 
+                // accessor functions 
+                var barLabel = function(d) { return d['reaction']; };
+                var barValue = function(d) { return parseFloat(d['proportion']); };
+
+                D = data
+                data = D['sideeffects']['serious']
+                $("#chartSerious").append('<p></p><p>10 most common <strong>SERIOUS</strong> side effects reported to the FDA:</p>')
+
+                // scales
+                var yScale = d3.scale.ordinal().domain(d3.range(0, data.length)).rangeBands([0, data.length * barHeight]);
+                var y = function(d, i) { return yScale(i); };
+                var yText = function(d, i) { return y(d, i) + yScale.rangeBand() / 2; };
+                var x = d3.scale.linear().domain([0, d3.max(data, barValue)]).range([0, maxBarWidth]);
+                
+                // svg container element
+                var chart = d3.select('#chartSerious').append("svg")
+                  .attr('width', maxBarWidth + barLabelWidth + valueLabelWidth)
+                  .attr('height', gridLabelHeight + gridChartOffset + data.length * barHeight);
+                
+                // grid line labels
+                var gridContainer = chart.append('g')
+                  .attr('transform', 'translate(' + barLabelWidth + ',' + gridLabelHeight + ')'); 
+                gridContainer.selectAll("text").data(x.ticks(10)).enter().append("text")
+                  .attr("x", x)
+                  .attr("dy", -3)
+                  .attr("text-anchor", "middle")
+                  .text(String);
+                
+                // vertical grid lines
+                gridContainer.selectAll("line").data(x.ticks(10)).enter().append("line")
+                  .attr("x1", x)
+                  .attr("x2", x)
+                  .attr("y1", 0)
+                  .attr("y2", yScale.rangeExtent()[1] + gridChartOffset)
+                  .style("stroke", "#ccc");
+                
+                // bar labels
+                var labelsContainer = chart.append('g')
+                  .attr('transform', 'translate(' + (barLabelWidth - barLabelPadding) + ',' + (gridLabelHeight + gridChartOffset) + ')'); 
+                labelsContainer.selectAll('text').data(data).enter().append('text')
+                  .attr('y', yText)
+                  .attr('stroke', 'none')
+                  .attr('fill', 'black')
+                  .attr("dy", ".35em") // vertical-align: middle
+                  .attr('text-anchor', 'end')
+                  .text(barLabel);
+                
+                // bars
+                var barsContainer = chart.append('g')
+                  .attr('transform', 'translate(' + barLabelWidth + ',' + (gridLabelHeight + gridChartOffset) + ')'); 
+                barsContainer.selectAll("rect").data(data).enter().append("rect")
+                  .attr('y', y)
+                  .attr('height', yScale.rangeBand())
+                  .attr('width', function(d) { return x(barValue(d)); })
+                  .attr('stroke', 'white')
+                  .style('fill', '#2C3E50');
+                
+                // bar value labels
+                barsContainer.selectAll("text").data(data).enter().append("text")
+                  .attr("x", function(d) { return x(barValue(d)); })
+                  .attr("y", yText)
+                  .attr("dx", 3) // padding-left
+                  .attr("dy", ".35em") // vertical-align: middle
+                  .attr("text-anchor", "start") // text-align: right
+                  .attr("fill", "black")
+                  .attr("stroke", "none")
+                  .text(function(d) { return d3.round(barValue(d), 2); });
+                // start line
+                barsContainer.append("line")
+                  .attr("y1", -gridChartOffset)
+                  .attr("y2", yScale.rangeExtent()[1] + gridChartOffset)
+                  .style("stroke", "#000");
+
+                // --------------------------------------------------------------
+                //For not serious side effects
+                data = D['sideeffects']['notSerious']
+                $("#chartNotSerious").append('<p></p><p>10 most common <strong>NOT serious</strong> side effects reported to the FDA:</p>')
+
+                // scales
+                var yScale = d3.scale.ordinal().domain(d3.range(0, data.length)).rangeBands([0, data.length * barHeight]);
+                var y = function(d, i) { return yScale(i); };
+                var yText = function(d, i) { return y(d, i) + yScale.rangeBand() / 2; };
+                var x = d3.scale.linear().domain([0, d3.max(data, barValue)]).range([0, maxBarWidth]);
+                
+                // svg container element
+                var chart = d3.select('#chartNotSerious').append("svg")
+                  .attr('width', maxBarWidth + barLabelWidth + valueLabelWidth)
+                  .attr('height', gridLabelHeight + gridChartOffset + data.length * barHeight);
+                
+                // grid line labels
+                var gridContainer = chart.append('g')
+                  .attr('transform', 'translate(' + barLabelWidth + ',' + gridLabelHeight + ')'); 
+                gridContainer.selectAll("text").data(x.ticks(10)).enter().append("text")
+                  .attr("x", x)
+                  .attr("dy", -3)
+                  .attr("text-anchor", "middle")
+                  .text(String);
+                
+                // vertical grid lines
+                gridContainer.selectAll("line").data(x.ticks(10)).enter().append("line")
+                  .attr("x1", x)
+                  .attr("x2", x)
+                  .attr("y1", 0)
+                  .attr("y2", yScale.rangeExtent()[1] + gridChartOffset)
+                  .style("stroke", "#ccc");
+                
+                // bar labels
+                var labelsContainer = chart.append('g')
+                  .attr('transform', 'translate(' + (barLabelWidth - barLabelPadding) + ',' + (gridLabelHeight + gridChartOffset) + ')'); 
+                labelsContainer.selectAll('text').data(data).enter().append('text')
+                  .attr('y', yText)
+                  .attr('stroke', 'none')
+                  .attr('fill', 'black')
+                  .attr("dy", ".35em") // vertical-align: middle
+                  .attr('text-anchor', 'end')
+                  .text(barLabel);
+                
+                // bars
+                var barsContainer = chart.append('g')
+                  .attr('transform', 'translate(' + barLabelWidth + ',' + (gridLabelHeight + gridChartOffset) + ')'); 
+                barsContainer.selectAll("rect").data(data).enter().append("rect")
+                  .attr('y', y)
+                  .attr('height', yScale.rangeBand())
+                  .attr('width', function(d) { return x(barValue(d)); })
+                  .attr('stroke', 'white')
+                  .style('fill', '#2C3E50');
+                
+                // bar value labels
+                barsContainer.selectAll("text").data(data).enter().append("text")
+                  .attr("x", function(d) { return x(barValue(d)); })
+                  .attr("y", yText)
+                  .attr("dx", 3) // padding-left
+                  .attr("dy", ".35em") // vertical-align: middle
+                  .attr("text-anchor", "start") // text-align: right
+                  .attr("fill", "black")
+                  .attr("stroke", "none")
+                  .text(function(d) { return d3.round(barValue(d), 2); });
+                // start line
+                barsContainer.append("line")
+                  .attr("y1", -gridChartOffset)
+                  .attr("y2", yScale.rangeExtent()[1] + gridChartOffset)
+                  .style("stroke", "#000");
+              } else {
+                $("#answerSEMessage").append('<p></p><p>Sorry, we could not find an entry for the drug name you entered. We are increasing our database constantly, check back later. We do know we lack entries for birth control and we are working on it. Or check your spelling! Thanks.</p>');
+              }
+
 
          });
          
          return false;
          
          });
-
-
-
 
     </script>
 
