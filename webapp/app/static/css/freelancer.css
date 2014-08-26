@@ -22,7 +22,16 @@ a:focus,
 a:active,
 a.active {
     outline: 0;
-    color: #18bc9c;
+    color: #FF0000;
+}
+
+a {
+    color: #FFFFFF;
+}
+
+#presentation {
+    display: block;
+    margin: 0 auto;
 }
 
 h1,
